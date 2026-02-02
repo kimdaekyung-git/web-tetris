@@ -6,25 +6,8 @@
  */
 
 import { describe, it, expect, beforeEach } from 'vitest';
-// import { Board } from '../../src/game/objects/Board';
-import { BOARD_WIDTH, BOARD_HEIGHT } from '../../src/game/config/game.config';
-
-// Placeholder - 실제 구현 전까지 테스트가 실패하도록 설정
-const Board = null as unknown as {
-  new (): {
-    width: number;
-    height: number;
-    grid: number[][];
-    getCell(x: number, y: number): number;
-    setCell(x: number, y: number, value: number): void;
-    isValidPosition(x: number, y: number): boolean;
-    isCellEmpty(x: number, y: number): boolean;
-    clear(): void;
-    placeBlocks(blocks: { x: number; y: number }[], color: number): void;
-    getFilledRows(): number[];
-    clearRows(rows: number[]): void;
-  };
-};
+import { Board } from '../../src/game/objects/Board';
+import { BOARD_WIDTH, BOARD_HEIGHT } from '../../src/game/config/constants';
 
 describe('Board', () => {
   let board: InstanceType<typeof Board>;

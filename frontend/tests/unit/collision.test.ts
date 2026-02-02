@@ -6,34 +6,12 @@
  */
 
 import { describe, it, expect, beforeEach } from 'vitest';
-// import { CollisionSystem } from '../../src/game/systems/CollisionSystem';
-// import { Board } from '../../src/game/objects/Board';
-// import { Tetromino } from '../../src/game/objects/Tetromino';
+import { CollisionSystem } from '../../src/game/systems/CollisionSystem';
+import type { IBoard, ITetromino } from '../../src/game/systems/CollisionSystem';
 
-// Placeholder types
-interface MockBoard {
-  isCellEmpty(x: number, y: number): boolean;
-  isValidPosition(x: number, y: number): boolean;
-}
-
-interface MockTetromino {
-  x: number;
-  y: number;
-  getBlocks(): { x: number; y: number }[];
-}
-
-// Placeholder - 실제 구현 전까지 테스트가 실패하도록 설정
-const CollisionSystem = null as unknown as {
-  new (board: MockBoard): {
-    board: MockBoard;
-    canMove(tetromino: MockTetromino, dx: number, dy: number): boolean;
-    canRotate(tetromino: MockTetromino, rotatedBlocks: { x: number; y: number }[]): boolean;
-    isColliding(tetromino: MockTetromino): boolean;
-    isAtBottom(tetromino: MockTetromino): boolean;
-    isGameOver(tetromino: MockTetromino): boolean;
-    getGhostPosition(tetromino: MockTetromino): number;
-  };
-};
+// Use interface types from CollisionSystem
+type MockBoard = IBoard;
+type MockTetromino = ITetromino;
 
 describe('CollisionSystem', () => {
   let collisionSystem: InstanceType<typeof CollisionSystem>;

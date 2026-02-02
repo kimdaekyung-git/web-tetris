@@ -19,7 +19,8 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@contracts/*": ["../contracts/*"]
     }
   },
   "include": ["src", "tests"],

@@ -6,25 +6,7 @@
  */
 
 import { describe, it, expect, beforeEach } from 'vitest';
-// import { ScoreManager } from '../../src/game/objects/ScoreManager';
-// import { LEVEL_SPEEDS } from '../../src/game/config/levels';
-
-// Placeholder - 실제 구현 전까지 테스트가 실패하도록 설정
-const ScoreManager = null as unknown as {
-  new (): {
-    score: number;
-    level: number;
-    lines: number;
-    addLines(count: number): void;
-    getDropSpeed(): number;
-    reset(): void;
-    getStats(): {
-      score: number;
-      level: number;
-      lines: number;
-    };
-  };
-};
+import { ScoreManager } from '../../src/game/objects/ScoreManager';
 
 // NES Tetris drop speeds (frames per grid cell)
 const NES_FRAME_TABLE: Record<number, number> = {
@@ -42,12 +24,7 @@ const NES_FRAME_TABLE: Record<number, number> = {
 };
 
 // NES scoring formula: base points × (level + 1)
-const SCORE_TABLE: Record<number, number> = {
-  1: 40, // Single
-  2: 100, // Double
-  3: 300, // Triple
-  4: 1200, // Tetris
-};
+// (Not used in tests, but kept for reference)
 
 describe('ScoreManager', () => {
   let scoreManager: InstanceType<typeof ScoreManager>;
@@ -265,6 +242,7 @@ describe('ScoreManager', () => {
         score: expect.any(Number),
         level: expect.any(Number),
         lines: expect.any(Number),
+        playTimeSeconds: expect.any(Number),
       });
     });
 

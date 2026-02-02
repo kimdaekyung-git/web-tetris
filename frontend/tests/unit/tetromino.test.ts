@@ -6,26 +6,8 @@
  */
 
 import { describe, it, expect } from 'vitest';
-// import { Tetromino } from '../../src/game/objects/Tetromino';
-// import { TETROMINO_SHAPES } from '../../src/game/config/tetrominos';
-import type { TetrominoType, Rotation } from '../../src/types/game.types';
-
-// Placeholder - 실제 구현 전까지 테스트가 실패하도록 설정
-const Tetromino = null as unknown as {
-  new (type: TetrominoType): {
-    type: TetrominoType;
-    rotation: Rotation;
-    x: number;
-    y: number;
-    getShape(): number[][];
-    rotateClockwise(): void;
-    rotateCounterClockwise(): void;
-    moveLeft(): void;
-    moveRight(): void;
-    moveDown(): void;
-    getBlocks(): { x: number; y: number }[];
-  };
-};
+import { Tetromino } from '../../src/game/objects/Tetromino';
+import type { TetrominoType } from '../../src/types/game.types';
 
 describe('Tetromino', () => {
   // ============================================================

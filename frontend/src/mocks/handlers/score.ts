@@ -11,8 +11,8 @@ import type {
   ScoreCreate,
   ScoreResponse,
   RankingResponse,
-} from '../../../contracts/types';
-import { API_ENDPOINTS } from '../../../contracts/score.contract';
+} from '@contracts/types';
+import { API_ENDPOINTS } from '@contracts/score.contract';
 
 // In-memory storage for mocking
 const players = new Map<string, PlayerResponse>();
