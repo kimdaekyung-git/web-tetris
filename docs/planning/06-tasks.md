@@ -139,7 +139,7 @@ flowchart TD
 
 ## M0: 프로젝트 셋업
 
-### [x] Phase 0, T0.1: 프로젝트 구조 초기화
+### [ ] Phase 0, T0.1: 프로젝트 구조 초기화
 
 **담당**: frontend-specialist
 
@@ -156,12 +156,12 @@ flowchart TD
 - `README.md`
 
 **완료 조건**:
-- [x] 디렉토리 구조 생성 완료
-- [x] Git 저장소 초기화 완료
+- [ ] 디렉토리 구조 생성 완료
+- [ ] Git 저장소 초기화 완료
 
 ---
 
-### [x] Phase 0, T0.2: 개발 환경 설정
+### [ ] Phase 0, T0.2: 개발 환경 설정
 
 **담당**: frontend-specialist
 
@@ -179,14 +179,14 @@ flowchart TD
 - `backend/pyproject.toml` (Ruff 설정)
 
 **완료 조건**:
-- [x] `npm install` 성공
-- [x] `pip install -r requirements.txt` 성공
-- [x] `npm run lint` 성공
-- [x] `ruff check .` 성공
+- [ ] `npm install` 성공
+- [ ] `pip install -r requirements.txt` 성공
+- [ ] `npm run lint` 성공
+- [ ] `ruff check .` 성공
 
 ---
 
-### [x] Phase 0, T0.3: Phaser 3 프로젝트 초기화
+### [ ] Phase 0, T0.3: Phaser 3 프로젝트 초기화
 
 **담당**: frontend-specialist
 
@@ -205,12 +205,12 @@ flowchart TD
 - `frontend/src/types/game.types.ts`
 
 **완료 조건**:
-- [x] `npm run dev` 실행 시 빈 Phaser 화면 표시
-- [x] 씬 전환 동작 확인 (Boot → Title)
+- [ ] `npm run dev` 실행 시 빈 Phaser 화면 표시
+- [ ] 씬 전환 동작 확인 (Boot → Title)
 
 ---
 
-### [x] Phase 0, T0.4: FastAPI 프로젝트 초기화
+### [ ] Phase 0, T0.4: FastAPI 프로젝트 초기화
 
 **담당**: backend-specialist
 
@@ -228,15 +228,15 @@ flowchart TD
 - `backend/app/schemas/__init__.py`
 
 **완료 조건**:
-- [x] `uvicorn app.main:app --reload` 실행 성공
-- [x] `GET /health` 응답 확인
-- [x] `/docs` Swagger UI 접근 가능
+- [ ] `uvicorn app.main:app --reload` 실행 성공
+- [ ] `GET /health` 응답 확인
+- [ ] `/docs` Swagger UI 접근 가능
 
 ---
 
 ## M0.5: 계약 & 테스트 설계
 
-### [x] Phase 0, T0.5.1: API 계약 정의
+### [ ] Phase 0, T0.5.1: API 계약 정의
 
 **담당**: test-specialist
 
@@ -252,12 +252,12 @@ flowchart TD
 - `frontend/src/mocks/handlers/score.ts` - MSW 핸들러
 
 **완료 조건**:
-- [x] TypeScript 타입과 Pydantic 스키마 일치
-- [x] API 계약 문서 작성 완료
+- [ ] TypeScript 타입과 Pydantic 스키마 일치
+- [ ] API 계약 문서 작성 완료
 
 ---
 
-### [x] Phase 0, T0.5.2: 프론트엔드 테스트 설계 (RED)
+### [ ] Phase 0, T0.5.2: 프론트엔드 테스트 설계 (RED)
 
 **담당**: test-specialist
 
@@ -273,13 +273,13 @@ flowchart TD
 - `frontend/tests/unit/scoring.test.ts`
 
 **완료 조건**:
-- [x] 모든 테스트 파일 생성
-- [x] `npm run test` 실행 시 모두 FAIL (RED 상태)
-- [x] 테스트 케이스 30개 이상
+- [ ] 모든 테스트 파일 생성
+- [ ] `npm run test` 실행 시 모두 FAIL (RED 상태)
+- [ ] 테스트 케이스 30개 이상
 
 ---
 
-### [x] Phase 0, T0.5.3: 백엔드 테스트 설계 (GREEN - API 이미 구현됨)
+### [ ] Phase 0, T0.5.3: 백엔드 테스트 설계 (RED)
 
 **담당**: test-specialist
 
@@ -293,15 +293,15 @@ flowchart TD
 - `backend/tests/conftest.py` (테스트 픽스처)
 
 **완료 조건**:
-- [x] 모든 테스트 파일 생성
-- [x] `pytest` 실행 시 모두 FAIL (RED 상태)
-- [x] 테스트 케이스 10개 이상
+- [ ] 모든 테스트 파일 생성
+- [ ] `pytest` 실행 시 모두 FAIL (RED 상태)
+- [ ] 테스트 케이스 10개 이상
 
 ---
 
 ## M1: FEAT-1 게임 코어 로직
 
-### [x] Phase 1, T1.1: 테트로미노 클래스 구현 RED→GREEN
+### [ ] Phase 1, T1.1: 테트로미노 클래스 구현 RED→GREEN
 
 **담당**: frontend-specialist
 
@@ -343,9 +343,9 @@ cd ../tetris-phase1-tetromino
 - `frontend/src/game/config/tetrominos.ts` (모양 데이터)
 
 **인수 조건**:
-- [x] 테스트 먼저 작성됨 (RED 확인)
-- [x] 모든 테스트 통과 (GREEN) - 28/28 passed
-- [x] 커버리지 >= 80%
+- [ ] 테스트 먼저 작성됨 (RED 확인)
+- [ ] 모든 테스트 통과 (GREEN)
+- [ ] 커버리지 >= 80%
 
 **완료 시 자동 실행**:
 ```bash
@@ -366,7 +366,7 @@ git worktree remove ../tetris-phase1-tetromino && git branch -d phase/1-tetromin
 
 ---
 
-### [x] Phase 1, T1.2: 게임 보드 구현 RED→GREEN
+### [ ] Phase 1, T1.2: 게임 보드 구현 RED→GREEN
 
 **담당**: frontend-specialist
 
@@ -399,14 +399,14 @@ cd ../tetris-phase1-board
 - `frontend/src/game/objects/Board.ts`
 
 **인수 조건**:
-- [x] 10x20 그리드 정상 동작
-- [x] 모든 테스트 통과 - 27/27 passed
+- [ ] 10x20 그리드 정상 동작
+- [ ] 모든 테스트 통과
 
 **완료 시 자동 실행**: (T1.1과 동일 패턴)
 
 ---
 
-### [x] Phase 1, T1.3: 충돌 감지 & 라인 클리어 RED→GREEN
+### [ ] Phase 1, T1.3: 충돌 감지 & 라인 클리어 RED→GREEN
 
 **담당**: frontend-specialist
 
@@ -439,12 +439,12 @@ cd ../tetris-phase1-collision
 - `frontend/src/game/systems/CollisionSystem.ts`
 
 **인수 조건**:
-- [x] 모든 충돌 케이스 테스트 통과 - 23/23 passed
-- [x] 라인 클리어 정상 동작
+- [ ] 모든 충돌 케이스 테스트 통과
+- [ ] 라인 클리어 정상 동작
 
 ---
 
-### [x] Phase 1, T1.4: 게임 루프 & 입력 처리 RED→GREEN
+### [ ] Phase 1, T1.4: 게임 루프 & 입력 처리 RED→GREEN
 
 **담당**: frontend-specialist
 
@@ -466,15 +466,15 @@ cd ../tetris-phase1-gameloop
 - `frontend/src/game/systems/InputManager.ts`
 
 **인수 조건**:
-- [x] 60fps 유지
-- [x] 키보드 조작 정상 동작
-- [x] 게임 오버 정상 감지
+- [ ] 60fps 유지
+- [ ] 키보드 조작 정상 동작
+- [ ] 게임 오버 정상 감지
 
 ---
 
 ## M2: FEAT-2 스테이지 시스템
 
-### [x] Phase 2, T2.1: 레벨/점수 시스템 RED→GREEN
+### [ ] Phase 2, T2.1: 레벨/점수 시스템 RED→GREEN
 
 **담당**: frontend-specialist
 
@@ -503,13 +503,13 @@ cd ../tetris-phase2-scoring
 - `frontend/src/game/config/levels.ts`
 
 **인수 조건**:
-- [x] 점수 계산 정확
-- [x] 레벨 1~10 속도 차이 구현
-- [x] 모든 테스트 통과 - 27/27 passed
+- [ ] 점수 계산 정확
+- [ ] 레벨 1~10 속도 차이 구현
+- [ ] 모든 테스트 통과
 
 ---
 
-### [x] Phase 2, T2.2: 게임 UI 표시 RED→GREEN
+### [ ] Phase 2, T2.2: 게임 UI 표시 RED→GREEN
 
 **담당**: frontend-specialist
 
@@ -535,14 +535,14 @@ cd ../tetris-phase2-ui
 - `frontend/src/game/ui/TouchControls.ts`
 
 **인수 조건**:
-- [x] UI 요소 정상 표시
-- [x] 모바일 터치 동작
+- [ ] UI 요소 정상 표시
+- [ ] 모바일 터치 동작
 
 ---
 
 ## M3: FEAT-3 오디오 시스템
 
-### [x] Phase 3, T3.1: BGM & 효과음 구현
+### [ ] Phase 3, T3.1: BGM & 효과음 구현
 
 **담당**: frontend-specialist
 
@@ -565,15 +565,15 @@ cd ../tetris-phase3-audio
 - `frontend/public/assets/audio/sfx-*.wav`
 
 **인수 조건**:
-- [x] BGM 정상 재생 (코로베이니키)
-- [x] 효과음 타이밍 정확 (이동/회전/착지/클리어/테트리스/레벨업/게임오버)
-- [x] 음소거 동작 (M키)
+- [ ] BGM 정상 재생
+- [ ] 효과음 타이밍 정확
+- [ ] 음소거 동작
 
 ---
 
 ## M4: FEAT-4 점수 API
 
-### [x] Phase 4, T4.1: 데이터베이스 모델 구현 RED→GREEN
+### [ ] Phase 4, T4.1: 데이터베이스 모델 구현 RED→GREEN
 
 **담당**: backend-specialist
 
@@ -602,12 +602,12 @@ cd ../tetris-phase4-db
 - `backend/app/models/score.py`
 
 **인수 조건**:
-- [x] 모델 생성 성공
-- [x] 테이블 생성 확인
+- [ ] 모델 생성 성공
+- [ ] 테이블 생성 확인
 
 ---
 
-### [x] Phase 4, T4.2: 점수 API 구현 RED→GREEN
+### [ ] Phase 4, T4.2: 점수 API 구현 RED→GREEN
 
 **담당**: backend-specialist
 
@@ -630,15 +630,15 @@ cd ../tetris-phase4-api
 - `backend/app/schemas/score.py` (확장)
 
 **인수 조건**:
-- [x] 모든 API 테스트 통과 - 31/31 passed
-- [x] Swagger 문서 정상 표시
-- [x] 에러 응답 형식 준수
+- [ ] 모든 API 테스트 통과
+- [ ] Swagger 문서 정상 표시
+- [ ] 에러 응답 형식 준수
 
 ---
 
 ## M5: 통합 및 배포
 
-### [x] Phase 5, T5.1: 프론트엔드-백엔드 연동
+### [ ] Phase 5, T5.1: 프론트엔드-백엔드 연동
 
 **담당**: frontend-specialist
 
@@ -660,13 +660,13 @@ cd ../tetris-phase5-integration
 - `frontend/src/game/scenes/GameOverScene.ts` (확장)
 
 **인수 조건**:
-- [x] 점수 저장 성공
-- [x] 랭킹 표시 성공
-- [x] 오프라인 폴백 동작
+- [ ] 점수 저장 성공
+- [ ] 랭킹 표시 성공
+- [ ] 오프라인 폴백 동작
 
 ---
 
-### [x] Phase 5, T5.2: E2E 테스트
+### [ ] Phase 5, T5.2: E2E 테스트
 
 **담당**: test-specialist
 
@@ -686,12 +686,12 @@ cd ../tetris-phase5-e2e
 - `frontend/playwright.config.ts`
 
 **인수 조건**:
-- [x] E2E 테스트 통과 (Playwright 설정 완료)
-- [x] 주요 사용자 플로우 커버 (게임 시작, 입력, 일시정지, 모바일)
+- [ ] E2E 테스트 통과
+- [ ] 주요 사용자 플로우 커버
 
 ---
 
-### [x] Phase 5, T5.3: 배포 설정
+### [ ] Phase 5, T5.3: 배포 설정
 
 **담당**: frontend-specialist
 
@@ -708,9 +708,9 @@ cd ../tetris-phase5-e2e
 - `.env.example`
 
 **인수 조건**:
-- [x] 프론트엔드 배포 설정 (vercel.json, .env.example)
-- [x] 백엔드 배포 설정 (Procfile, .env.example)
-- [x] 프로덕션 빌드 성공
+- [ ] 프론트엔드 배포 성공
+- [ ] 백엔드 배포 성공
+- [ ] 프로덕션 환경 정상 동작
 
 ---
 

@@ -6,6 +6,7 @@ Phase 4에서 확장 예정
 """
 
 import uuid
+
 import pytest
 from fastapi.testclient import TestClient
 
@@ -74,14 +75,14 @@ class TestPlayerEndpoint:
             "/api/v1/players",
             json={"id": player_id, "nickname": "TEST"},
         )
-        first_played = response1.json()["last_played_at"]
+        # Just verify first response is OK
+        assert response1.status_code == 200
 
         # Create again (should update)
         response2 = client.post(
             "/api/v1/players",
             json={"id": player_id, "nickname": "TEST"},
         )
-        second_played = response2.json()["last_played_at"]
 
         # Times should be different (or at least not error)
         assert response2.status_code == 200
@@ -215,7 +216,7 @@ class TestRankingEndpoint:
 
         # Create scores with different values
         scores = [5000, 3000, 1000]
-        for pid, score in zip(players, scores):
+        for pid, score in zip(players, scores, strict=True):
             client.post(
                 "/api/v1/scores",
                 json={

@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import UTC, datetime
 from uuid import uuid4
 
 from fastapi import APIRouter, Depends, HTTPException
@@ -26,7 +26,7 @@ async def create_player(player_data: PlayerCreate, db: Session = Depends(get_db)
 
     if existing_player:
         # Update last played time
-        existing_player.last_played_at = datetime.utcnow()
+        existing_player.last_played_at = datetime.now(UTC)
         db.commit()
         db.refresh(existing_player)
         return existing_player
@@ -62,7 +62,7 @@ async def create_score(score_data: ScoreCreate, db: Session = Depends(get_db)):
     db.add(score)
 
     # Update player's last played time
-    player.last_played_at = datetime.utcnow()
+    player.last_played_at = datetime.now(UTC)
 
     db.commit()
     db.refresh(score)

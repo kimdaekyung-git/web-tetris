@@ -1,9 +1,14 @@
-from datetime import datetime
+from datetime import UTC, datetime
 
 from sqlalchemy import CheckConstraint, Column, DateTime, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 
 from app.database import Base
+
+
+def utc_now():
+    """Return current UTC time for SQLAlchemy defaults"""
+    return datetime.now(UTC)
 
 
 class Player(Base):
@@ -13,8 +18,8 @@ class Player(Base):
 
     id = Column(String, primary_key=True)
     nickname = Column(String(10), nullable=False, default="PLAYER")
-    created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
-    last_played_at = Column(DateTime, nullable=False, default=datetime.utcnow)
+    created_at = Column(DateTime, nullable=False, default=utc_now)
+    last_played_at = Column(DateTime, nullable=False, default=utc_now)
 
     # Relationship
     scores = relationship("Score", back_populates="player", cascade="all, delete-orphan")
@@ -31,7 +36,7 @@ class Score(Base):
     level = Column(Integer, nullable=False)
     lines = Column(Integer, nullable=False)
     play_time_seconds = Column(Integer, nullable=False)
-    created_at = Column(DateTime, nullable=False, default=datetime.utcnow)
+    created_at = Column(DateTime, nullable=False, default=utc_now)
 
     # Constraints
     __table_args__ = (

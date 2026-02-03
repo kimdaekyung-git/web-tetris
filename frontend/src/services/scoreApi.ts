@@ -13,6 +13,7 @@ import type {
   ScoreResponse,
   RankingResponse,
 } from '@contracts/types';
+import { logger } from '../utils/logger';
 
 // ============================================================
 // Configuration
@@ -73,13 +74,13 @@ export async function createPlayer(): Promise<PlayerResponse | null> {
     });
 
     if (!response.ok) {
-      console.error('Failed to create player:', response.status);
+      logger.error('Failed to create player:', response.status);
       return null;
     }
 
     return await response.json();
   } catch (error) {
-    console.error('Network error creating player:', error);
+    logger.error('Network error creating player:', error);
     return null;
   }
 }
@@ -113,7 +114,7 @@ export async function saveScore(
     });
 
     if (!response.ok) {
-      console.error('Failed to save score:', response.status);
+      logger.error('Failed to save score:', response.status);
       savePendingScore(scoreData);
       return null;
     }
@@ -123,7 +124,7 @@ export async function saveScore(
 
     return await response.json();
   } catch (error) {
-    console.error('Network error saving score:', error);
+    logger.error('Network error saving score:', error);
     savePendingScore(scoreData);
     return null;
   }
@@ -139,13 +140,13 @@ export async function getRankings(limit: number = 10): Promise<RankingResponse |
     );
 
     if (!response.ok) {
-      console.error('Failed to get rankings:', response.status);
+      logger.error('Failed to get rankings:', response.status);
       return null;
     }
 
     return await response.json();
   } catch (error) {
-    console.error('Network error getting rankings:', error);
+    logger.error('Network error getting rankings:', error);
     return null;
   }
 }
@@ -161,13 +162,13 @@ export async function getPlayerScores(limit: number = 10): Promise<ScoreResponse
     );
 
     if (!response.ok) {
-      console.error('Failed to get player scores:', response.status);
+      logger.error('Failed to get player scores:', response.status);
       return null;
     }
 
     return await response.json();
   } catch (error) {
-    console.error('Network error getting player scores:', error);
+    logger.error('Network error getting player scores:', error);
     return null;
   }
 }
@@ -186,7 +187,7 @@ function savePendingScore(scoreData: ScoreCreate): void {
     timestamp: Date.now(),
   });
   localStorage.setItem(STORAGE_KEY_PENDING_SCORES, JSON.stringify(pending));
-  console.log('Score saved to pending queue:', pending.length, 'scores pending');
+  logger.log('Score saved to pending queue:', pending.length, 'scores pending');
 }
 
 /**
@@ -229,7 +230,7 @@ async function submitPendingScores(): Promise<void> {
   localStorage.setItem(STORAGE_KEY_PENDING_SCORES, JSON.stringify(stillPending));
 
   if (stillPending.length < pending.length) {
-    console.log('Submitted pending scores:', pending.length - stillPending.length);
+    logger.log('Submitted pending scores:', pending.length - stillPending.length);
   }
 }
 
