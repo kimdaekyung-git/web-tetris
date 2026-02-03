@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.config import settings
 from app.database import Base, engine
 from app.routes import score
 
@@ -13,15 +14,10 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# CORS settings
-origins = [
-    "http://localhost:5173",  # Vite dev server
-    "http://127.0.0.1:5173",
-]
-
+# CORS settings from environment variables
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=settings.cors_origins_list,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
