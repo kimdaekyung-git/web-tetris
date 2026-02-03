@@ -5,6 +5,8 @@
  * Web Audio API 기반으로 외부 파일 없이 동작
  */
 
+import { logger } from '../../utils/logger';
+
 type SoundEffect = 'move' | 'rotate' | 'drop' | 'clear' | 'tetris' | 'levelup' | 'gameover';
 
 export class AudioManager {
@@ -45,9 +47,9 @@ export class AudioManager {
       this.sfxGain.connect(this.masterGain);
       this.sfxGain.gain.value = this.sfxVolume;
 
-      console.log('AudioManager: Initialized');
+      logger.log('AudioManager: Initialized');
     } catch (e) {
-      console.warn('AudioManager: Web Audio API not supported');
+      logger.warn('AudioManager: Web Audio API not supported');
     }
   }
 
@@ -100,7 +102,7 @@ export class AudioManager {
     this.resumeContext();
     this.bgmPlaying = true;
     this.playKorobeiniki();
-    console.log('AudioManager: BGM started');
+    logger.log('AudioManager: BGM started');
   }
 
   private playKorobeiniki(): void {
@@ -186,7 +188,7 @@ export class AudioManager {
     }
     this.bgmTimeouts = [];
 
-    console.log('AudioManager: BGM stopped');
+    logger.log('AudioManager: BGM stopped');
   }
 
   // ============================================================
@@ -286,7 +288,7 @@ export class AudioManager {
       this.stopBGM();
     }
 
-    console.log('AudioManager: Muted =', this.isMuted);
+    logger.log('AudioManager: Muted =', this.isMuted);
     return this.isMuted;
   }
 

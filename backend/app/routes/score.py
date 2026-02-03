@@ -1,7 +1,9 @@
 from datetime import UTC, datetime
 from uuid import uuid4
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Request
+from slowapi import Limiter
+from slowapi.util import get_remote_address
 from sqlalchemy.orm import Session
 
 from app.database import get_db
@@ -16,10 +18,12 @@ from app.schemas.score import (
 )
 
 router = APIRouter(tags=["scores"])
+limiter = Limiter(key_func=get_remote_address)
 
 
 @router.post("/players", response_model=PlayerResponse)
-async def create_player(player_data: PlayerCreate, db: Session = Depends(get_db)):
+@limiter.limit("10/minute")
+async def create_player(request: Request, player_data: PlayerCreate, db: Session = Depends(get_db)):
     """Create or update a player"""
     # Check if player exists
     existing_player = db.query(Player).filter(Player.id == player_data.id).first()
@@ -43,7 +47,8 @@ async def create_player(player_data: PlayerCreate, db: Session = Depends(get_db)
 
 
 @router.post("/scores", response_model=ScoreResponse)
-async def create_score(score_data: ScoreCreate, db: Session = Depends(get_db)):
+@limiter.limit("20/minute")
+async def create_score(request: Request, score_data: ScoreCreate, db: Session = Depends(get_db)):
     """Save a game score"""
     # Verify player exists
     player = db.query(Player).filter(Player.id == score_data.player_id).first()
@@ -70,7 +75,8 @@ async def create_score(score_data: ScoreCreate, db: Session = Depends(get_db)):
 
 
 @router.get("/scores", response_model=RankingResponse)
-async def get_rankings(limit: int = 10, db: Session = Depends(get_db)):
+@limiter.limit("30/minute")
+async def get_rankings(request: Request, limit: int = 10, db: Session = Depends(get_db)):
     """Get top scores ranking"""
     scores = (
         db.query(Score, Player)
@@ -98,8 +104,9 @@ async def get_rankings(limit: int = 10, db: Session = Depends(get_db)):
 
 
 @router.get("/scores/{player_id}", response_model=list[ScoreResponse])
+@limiter.limit("30/minute")
 async def get_player_scores(
-    player_id: str, limit: int = 10, db: Session = Depends(get_db)
+    request: Request, player_id: str, limit: int = 10, db: Session = Depends(get_db)
 ):
     """Get a player's score history"""
     scores = (
