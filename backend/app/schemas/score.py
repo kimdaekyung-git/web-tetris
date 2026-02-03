@@ -1,5 +1,5 @@
-from datetime import datetime
 import re
+from datetime import datetime
 
 from pydantic import BaseModel, Field, field_validator
 
@@ -9,7 +9,7 @@ class PlayerCreate(BaseModel):
 
     id: str = Field(..., description="Client-generated UUID", min_length=36, max_length=36)
     nickname: str = Field(default="PLAYER", min_length=1, max_length=10, description="Player nickname")
-    
+
     @field_validator('id')
     @classmethod
     def validate_uuid(cls, v: str) -> str:
@@ -18,7 +18,7 @@ class PlayerCreate(BaseModel):
         if not uuid_pattern.match(v):
             raise ValueError('Invalid UUID format')
         return v.lower()
-    
+
     @field_validator('nickname')
     @classmethod
     def validate_nickname(cls, v: str) -> str:
@@ -49,7 +49,7 @@ class ScoreCreate(BaseModel):
     level: int = Field(..., ge=1, le=10, description="Reached level")
     lines: int = Field(..., ge=0, le=9999, description="Lines cleared")
     play_time_seconds: int = Field(..., ge=0, le=86400, description="Play time in seconds (max 24h)")
-    
+
     @field_validator('player_id')
     @classmethod
     def validate_player_id(cls, v: str) -> str:
